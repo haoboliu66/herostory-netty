@@ -26,6 +26,22 @@
 
 
 
+http://cdn0001.afrxvk.cn/hero_story/demo/step010/index.html?serverAddr=127.0.0.1:12345&userId=2
+
+服务端和客户端:
+
+二进制数据交互
+
+Java对象序列化, 然后才可以到网络中传输
+
+编码 + 解码
+
+Web开发, 框架都封装好了编码解码的过程
+
+但是游戏服务器开发就需要自己定义编码和解码
+
+
+
 
 
 # 第二节
@@ -86,11 +102,17 @@ Decoder(解析消息, 根据消息编码, 看msg是什么类型的cmd)
 
 # 第三节
 
+> 34 别急，先重构！设计模式实战
 
 
 
+利用反射重构, 完成cmd的类型和对应的handler类型的映射
 
 
+
+Javassist
+
+https://www.javassist.org/tutorial/tutorial.html
 
 
 

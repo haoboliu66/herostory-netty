@@ -1,6 +1,7 @@
 package com.hbliu.herostory;
 
 import com.google.protobuf.GeneratedMessageV3;
+import com.google.protobuf.Message;
 import com.hbliu.herostory.message.GameMsgProtocol;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
@@ -32,24 +33,18 @@ public class GameMsgDecoder extends ChannelInboundHandlerAdapter {
             byte[] msgBody = new byte[byteBuf.readableBytes()];
             byteBuf.readBytes(msgBody);
 
-            GeneratedMessageV3 cmd = null;
+            // 根据接收到的msgCode值, decode出对应的cmd
+            Message.Builder msgBuilder = GameMsgRecognizer.getBuilderByMsgCode(msgCode);
+            if (msgBuilder == null) return;
+            msgBuilder.clear();
+            msgBuilder.mergeFrom(msgBody);
+            Message cmd = msgBuilder.build();
 
-            // 根据接收到的msgCode值, 找到对应的cmd
-            switch (msgCode) {
-                case GameMsgProtocol.MsgCode.USER_ENTRY_CMD_VALUE:
-                    cmd = GameMsgProtocol.UserEntryCmd.parseFrom(msgBody);
-                    break;
-                case GameMsgProtocol.MsgCode.WHO_ELSE_IS_HERE_CMD_VALUE:
-                    cmd = GameMsgProtocol.WhoElseIsHereCmd.parseFrom(msgBody);
-                    break;
-
-                default:
-                    break;
-
-            }
+            System.out.println(cmd);
             if (cmd != null) {
                 ctx.fireChannelRead(cmd);
             }
+
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);
         }

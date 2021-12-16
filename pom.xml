@@ -15,7 +15,6 @@
             <artifactId>netty-all</artifactId>
             <version>4.1.43.Final</version>
         </dependency>
-
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
@@ -46,6 +45,7 @@
                 </includes>
                 <filtering>false</filtering>
             </resource>
+
 
         </resources>
         <plugins>
