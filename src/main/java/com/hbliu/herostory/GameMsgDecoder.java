@@ -40,7 +40,6 @@ public class GameMsgDecoder extends ChannelInboundHandlerAdapter {
             msgBuilder.mergeFrom(msgBody);
             Message cmd = msgBuilder.build();
 
-            System.out.println(cmd);
             if (cmd != null) {
                 ctx.fireChannelRead(cmd);
             }

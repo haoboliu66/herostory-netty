@@ -7,29 +7,27 @@ import io.netty.util.concurrent.GlobalEventExecutor;
 
 public final class Broadcaster {
 
-    private static final ChannelGroup channelGroup = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
+  private static final ChannelGroup channelGroup = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
 
-    private Broadcaster() {
+  private Broadcaster() {
+  }
+
+  public static void addChannel(Channel ch) {
+    if (ch != null) {
+      channelGroup.add(ch);
     }
+  }
 
-
-    public static void addChannel(Channel ch) {
-        if (ch != null) {
-            channelGroup.add(ch);
-        }
+  public static void removeChannel(Channel ch) {
+    if (ch != null) {
+      channelGroup.remove(ch);
     }
+  }
 
-
-    public static void removeChannel(Channel ch) {
-        if (ch != null) {
-            channelGroup.remove(ch);
-        }
+  public static void broadcast(Object obj) {
+    if (obj != null) {
+      channelGroup.writeAndFlush(obj);
     }
-
-    public static void broadcast(Object obj) {
-        if (obj != null) {
-            channelGroup.writeAndFlush(obj);
-        }
-    }
+  }
 
 }

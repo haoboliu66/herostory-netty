@@ -45,7 +45,7 @@ public final class CmdHandlerFactory {
 
   /*  建立 cmd消息类型 和 其对应handler类 的映射 */
   public static void init() {
-    LOGGER.info("CmdHandlerFactory init");
+    LOGGER.info("Init cmd-msg-type and cmd-handler mapping");
     final String packageName = CmdHandler.class.getPackage()
                                                .getName();
     // 获取CmdHandler的所有实现类
@@ -86,7 +86,7 @@ public final class CmdHandlerFactory {
       try {
         CmdHandler<?> newHandler = (CmdHandler<?>) subClazz.newInstance();
         LOGGER.info("Mapping {} <==> {}", targetCmdClazz.getName(), subClazz.getName());
-        handlerMap.put(subClazz, newHandler);
+        handlerMap.put(targetCmdClazz, newHandler);
 
       } catch (InstantiationException e) {
         LOGGER.error("", e);
@@ -104,6 +104,8 @@ public final class CmdHandlerFactory {
     if (msgClazz == null) {
       return null;
     }
+    LOGGER.info("msgClazz received {} ==> get msgHandler {}", msgClazz.getName(),
+        handlerMap.get(msgClazz).getClass().getName());
     return handlerMap.get(msgClazz);
   }
 
