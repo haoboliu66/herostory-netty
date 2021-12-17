@@ -24,7 +24,7 @@ public class GameMsgHandler extends SimpleChannelInboundHandler<Object> {
     try {
       super.channelActive(ctx);
       Broadcaster.addChannel(ctx.channel());
-    } catch (Exception e) {
+    } catch (final Exception e) {
       LOGGER.error(e.getMessage(), e);
     }
   }
@@ -45,14 +45,14 @@ public class GameMsgHandler extends SimpleChannelInboundHandler<Object> {
         return;
       }
 
-      GameMsgProtocol.UserQuitResult.Builder resultBuilder = GameMsgProtocol.UserQuitResult.newBuilder();
+      final GameMsgProtocol.UserQuitResult.Builder resultBuilder = GameMsgProtocol.UserQuitResult.newBuilder();
       resultBuilder.setQuitUserId((Integer) userId);
       GameMsgProtocol.UserQuitResult result = resultBuilder.build();
       Broadcaster.broadcast(result);
 
       UserManager.removeUser((Integer) userId);
       Broadcaster.removeChannel(ctx.channel());
-    } catch (Exception e) {
+    } catch (final Exception e) {
       LOGGER.error(e.getMessage(), e);
     }
 
@@ -60,7 +60,7 @@ public class GameMsgHandler extends SimpleChannelInboundHandler<Object> {
   }
 
   @Override
-  protected void channelRead0(ChannelHandlerContext ctx, Object msg) {
+  protected void channelRead0(final ChannelHandlerContext ctx, final Object msg) {
     if (ctx == null || msg == null) {
       return;
     }

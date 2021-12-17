@@ -1,7 +1,7 @@
 package com.hbliu.herostory.cmdhandler;
 
 import com.hbliu.herostory.Broadcaster;
-import com.hbliu.herostory.User;
+import com.hbliu.herostory.entity.User;
 import com.hbliu.herostory.UserManager;
 import com.hbliu.herostory.message.GameMsgProtocol.UserEntryResult;
 import com.hbliu.herostory.message.GameMsgProtocol.UserEntryCmd;
@@ -23,7 +23,8 @@ public class UserEntryCmdHandler implements CmdHandler<UserEntryCmd> {
     int userId = cmd.getUserId();
     String heroAvatar = cmd.getHeroAvatar();
 
-    User newUser = new User(userId, heroAvatar);
+    final User newUser = new User(userId, heroAvatar);
+    newUser.setCurrentHp(User.INITIAL_HP);
     UserManager.addUser(newUser);
 
     // 保存用户id到session
@@ -31,11 +32,11 @@ public class UserEntryCmdHandler implements CmdHandler<UserEntryCmd> {
        .attr(AttributeKey.valueOf("userId"))
        .set(userId);
 
-    UserEntryResult.Builder resultBuilder = UserEntryResult.newBuilder();
+    final UserEntryResult.Builder resultBuilder = UserEntryResult.newBuilder();
     resultBuilder.setUserId(userId)
                  .setHeroAvatar(heroAvatar);
 
-    UserEntryResult result = resultBuilder.build();
+    final UserEntryResult result = resultBuilder.build();
     Broadcaster.broadcast(result);
   }
 

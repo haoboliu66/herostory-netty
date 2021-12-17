@@ -49,7 +49,7 @@ public final class CmdHandlerFactory {
     final String packageName = CmdHandler.class.getPackage()
                                                .getName();
     // 获取CmdHandler的所有实现类
-    Set<Class<?>> clazzSet = PackageUtil.listSubClazz(packageName, true, CmdHandler.class);
+    final Set<Class<?>> clazzSet = PackageUtil.listSubClazz(packageName, true, CmdHandler.class);
 
     // 要找到subClazz这个类实现的接口上的范型
     for (Class<?> subClazz : clazzSet) {
@@ -59,8 +59,8 @@ public final class CmdHandlerFactory {
 
       Class<?> targetCmdClazz = null;
 
-      Type[] genericInterfaces = subClazz.getGenericInterfaces();
-      ParameterizedType type = (ParameterizedType) genericInterfaces[0];
+      final Type[] genericInterfaces = subClazz.getGenericInterfaces();
+      final ParameterizedType type = (ParameterizedType) genericInterfaces[0];
       targetCmdClazz = (Class<?>) type.getActualTypeArguments()[0];
 
 //      Method[] methodArray = subClazz.getDeclaredMethods();
@@ -84,23 +84,22 @@ public final class CmdHandlerFactory {
       }
 
       try {
-        CmdHandler<?> newHandler = (CmdHandler<?>) subClazz.newInstance();
+        final CmdHandler<?> newHandler = (CmdHandler<?>) subClazz.newInstance();
         LOGGER.info("Mapping {} <==> {}", targetCmdClazz.getName(), subClazz.getName());
         handlerMap.put(targetCmdClazz, newHandler);
 
-      } catch (InstantiationException e) {
-        LOGGER.error("", e);
+      } catch (final InstantiationException e) {
+        LOGGER.error(e.getMessage());
       } catch (IllegalAccessException e) {
-        LOGGER.error("", e);
+        LOGGER.error(e.getMessage());
       }
     }
   }
 
-
   /**
    * 根据传入的消息类型创建相应的handler
    */
-  public static CmdHandler<? extends GeneratedMessageV3> createHandler(Class<?> msgClazz) {
+  public static CmdHandler<? extends GeneratedMessageV3> createHandler(final Class<?> msgClazz) {
     if (msgClazz == null) {
       return null;
     }

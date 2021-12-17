@@ -1,6 +1,6 @@
 package com.hbliu.herostory.cmdhandler;
 
-import com.hbliu.herostory.User;
+import com.hbliu.herostory.entity.User;
 import com.hbliu.herostory.UserManager;
 import com.hbliu.herostory.message.GameMsgProtocol.WhoElseIsHereResult;
 import com.hbliu.herostory.message.GameMsgProtocol.WhoElseIsHereCmd;
@@ -24,8 +24,8 @@ public class WhoElseIsHereCmdHandler implements CmdHandler<WhoElseIsHereCmd> {
       }
 
       WhoElseIsHereResult.UserInfo.Builder builder = WhoElseIsHereResult.UserInfo.newBuilder();
-      builder.setUserId(user.userId)
-             .setHeroAvatar(user.heroAvatar);
+      builder.setUserId(user.getUserId())
+             .setHeroAvatar(user.getHeroAvatar());
 
       resultBuilder.addUserInfo(builder);
     }
