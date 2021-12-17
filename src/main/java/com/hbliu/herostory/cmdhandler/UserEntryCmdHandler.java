@@ -3,8 +3,8 @@ package com.hbliu.herostory.cmdhandler;
 import com.hbliu.herostory.Broadcaster;
 import com.hbliu.herostory.entity.User;
 import com.hbliu.herostory.UserManager;
-import com.hbliu.herostory.message.GameMsgProtocol.UserEntryResult;
-import com.hbliu.herostory.message.GameMsgProtocol.UserEntryCmd;
+import com.hbliu.herostory.message.generated.GameMsgProtocol.UserEntryResult;
+import com.hbliu.herostory.message.generated.GameMsgProtocol.UserEntryCmd;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.AttributeKey;

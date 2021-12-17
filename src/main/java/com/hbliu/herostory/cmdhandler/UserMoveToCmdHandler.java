@@ -1,8 +1,8 @@
 package com.hbliu.herostory.cmdhandler;
 
 import com.hbliu.herostory.Broadcaster;
-import com.hbliu.herostory.message.GameMsgProtocol.UserMoveToResult;
-import com.hbliu.herostory.message.GameMsgProtocol.UserMoveToCmd;
+import com.hbliu.herostory.message.generated.GameMsgProtocol.UserMoveToResult;
+import com.hbliu.herostory.message.generated.GameMsgProtocol.UserMoveToCmd;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.AttributeKey;

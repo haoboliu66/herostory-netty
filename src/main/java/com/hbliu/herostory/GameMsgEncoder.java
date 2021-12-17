@@ -1,7 +1,6 @@
 package com.hbliu.herostory;
 
 import com.google.protobuf.GeneratedMessageV3;
-import com.hbliu.herostory.message.GameMsgProtocol;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
@@ -11,9 +10,6 @@ import io.netty.handler.codec.http.websocketx.BinaryWebSocketFrame;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.nio.ByteBuffer;
-import java.util.Arrays;
 
 
 public class GameMsgEncoder extends ChannelOutboundHandlerAdapter {

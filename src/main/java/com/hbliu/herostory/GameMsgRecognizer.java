@@ -2,7 +2,7 @@ package com.hbliu.herostory;
 
 import com.google.protobuf.GeneratedMessageV3;
 import com.google.protobuf.Message;
-import com.hbliu.herostory.message.GameMsgProtocol;
+import com.hbliu.herostory.message.generated.GameMsgProtocol;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -126,11 +126,11 @@ public final class GameMsgRecognizer {
     LOGGER.info("GameMsgRecognizer # msgCode received: {}", msgCode);
 
     final GeneratedMessageV3 obj = msgCodeAndMsgObjectMap.get(msgCode);
-    System.out.println(obj);
+
     if (obj == null) {
       return null;
     }
-    System.out.println(obj);
+
     return obj.newBuilderForType();
   }
 

@@ -2,8 +2,8 @@ package com.hbliu.herostory.cmdhandler;
 
 import com.hbliu.herostory.entity.User;
 import com.hbliu.herostory.UserManager;
-import com.hbliu.herostory.message.GameMsgProtocol.WhoElseIsHereResult;
-import com.hbliu.herostory.message.GameMsgProtocol.WhoElseIsHereCmd;
+import com.hbliu.herostory.message.generated.GameMsgProtocol.WhoElseIsHereResult;
+import com.hbliu.herostory.message.generated.GameMsgProtocol.WhoElseIsHereCmd;
 
 import io.netty.channel.ChannelHandlerContext;
 

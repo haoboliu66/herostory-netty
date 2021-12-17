@@ -3,7 +3,7 @@ package com.hbliu.herostory;
 import com.google.protobuf.GeneratedMessageV3;
 import com.hbliu.herostory.factory.CmdHandlerFactory;
 import com.hbliu.herostory.cmdhandler.CmdHandler;
-import com.hbliu.herostory.message.GameMsgProtocol;
+import com.hbliu.herostory.message.generated.GameMsgProtocol;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;

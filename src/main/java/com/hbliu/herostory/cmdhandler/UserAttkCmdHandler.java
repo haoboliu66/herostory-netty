@@ -6,11 +6,11 @@ import org.slf4j.LoggerFactory;
 import com.hbliu.herostory.Broadcaster;
 import com.hbliu.herostory.entity.User;
 import com.hbliu.herostory.UserManager;
-import com.hbliu.herostory.message.GameMsgProtocol.UserAttkCmd;
-import com.hbliu.herostory.message.GameMsgProtocol.UserAttkResult;
-import com.hbliu.herostory.message.GameMsgProtocol.UserAttkResult.Builder;
-import com.hbliu.herostory.message.GameMsgProtocol.UserDieResult;
-import com.hbliu.herostory.message.GameMsgProtocol.UserSubtractHpResult;
+import com.hbliu.herostory.message.generated.GameMsgProtocol.UserAttkCmd;
+import com.hbliu.herostory.message.generated.GameMsgProtocol.UserAttkResult;
+import com.hbliu.herostory.message.generated.GameMsgProtocol.UserAttkResult.Builder;
+import com.hbliu.herostory.message.generated.GameMsgProtocol.UserDieResult;
+import com.hbliu.herostory.message.generated.GameMsgProtocol.UserSubtractHpResult;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.AttributeKey;
